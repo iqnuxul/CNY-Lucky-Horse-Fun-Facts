@@ -16,11 +16,16 @@ export const TopicCard: React.FC<TopicCardProps> = ({ title, onClick }) => {
       </h3>
 
       <div className="text-cny-gold/80 group-hover:text-cny-gold transition-colors flex-shrink-0">
-        <img 
-          src="public/click.png" 
-          alt="click" 
-          className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:scale-110 filter brightness-0 invert opacity-80 group-hover:opacity-100"
-        />
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          strokeWidth={2.5} 
+          stroke="currentColor" 
+          className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-1"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
       </div>
     </div>
   );

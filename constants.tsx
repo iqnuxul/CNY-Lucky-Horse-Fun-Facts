@@ -84,6 +84,24 @@ export const COMPARISON_DETAILS = [
     ]
   },
   {
+    id: 'observatory',
+    title: "Scientific Authority: Purple Mountain",
+    headerBg: "bg-indigo-900",
+    icon: (
+       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+    ),
+    content: [
+      {
+        subtitle: "Calculated in Nanjing",
+        text: "The official calendar is scientifically calculated by the Purple Mountain Observatory in Nanjing, based on China's geography (120° East). The exact moment of the new moon is determined by China Standard Time."
+      },
+      {
+        subtitle: "One Moon, Different Days",
+        text: "Because time zones differ, the new moon can fall on different dates in other countries. If another country celebrates on the same date calculated by China, they are following the Chinese Calendar."
+      }
+    ]
+  },
+  {
     id: 'history',
     title: "The History: Colonial Legacy",
     headerBg: "bg-cny-gold",
@@ -94,12 +112,10 @@ export const COMPARISON_DETAILS = [
       {
         subtitle: "The 1968 Shift",
         text: "In Hong Kong, the Holidays (Amendment) Ordinance No 19 of 1967 officially used 'Chinese New Year'. Just one year later, British colonial authorities changed it to 'Lunar New Year' in the 1968 Ordinance (Bill No. 11). This bureaucratic change aimed to dilute the festival's specific Chinese identity."
-      },
-      {
-        subtitle: "Imperial & Modern Authority",
-        text: "Calendar calculation was historically the Emperor's prerogative. Today, it is scientifically calculated by the Purple Mountain Observatory. It is a precise national standard, not a generic folk occurrence."
       }
-    ]
+    ],
+    image: "https://github.com/iqnuxul/CNY-Lucky-Horse-Fun-Facts/blob/4ad4b53228c210f5b2dbab69a097212913e36e41/IMG_0382.jpg?raw=true",
+    imageCaption: "Proof: The 1968 Ordinance change document."
   },
   {
     id: 'culture',
@@ -110,11 +126,11 @@ export const COMPARISON_DETAILS = [
     ),
     content: [
       {
-        subtitle: "Inclusivity means Recognition",
-        text: "We call the language 'English' to honor its origin. Similarly, 'Chinese New Year' honors the Lunisolar system developed in China. Using 'Lunar' flattens this complex system into a generic 'moon holiday', erasing centuries of scientific history."
+        subtitle: "INCLUSIVITY MEANS RECOGNITION",
+        text: "'Chinese New Year' honors the Lunisolar system developed in China. Using 'Lunar' flattens this complex system into a generic 'moon holiday', erasing centuries of scientific history."
       },
       {
-        subtitle: "Avoiding Appropriation",
+        subtitle: "AVOIDING APPROPRIATION",
         text: "Renaming the festival 'Lunar New Year' for convenience often inadvertently appropriates the culture by stripping away its name and history. True inclusivity respects the source."
       }
     ]
@@ -123,7 +139,7 @@ export const COMPARISON_DETAILS = [
 
 export const GREETINGS = [
   { phrase: "Happy New Year", pinyin: "Xīn Nián Kuài Lè", chinese: "新年快乐" },
-  { phrase: "Wishing you prosperity", pinyin: "Gōng Xǐ Fā Cái", chinese: "恭喜发财" },
+  { phrase: "Wishing you wealth", pinyin: "Gōng Xǐ Fā Cái", chinese: "恭喜发财" },
   { phrase: "Good health", pinyin: "Shēn Tǐ Jiàn Kāng", chinese: "身体健康" },
   { phrase: "May all your wishes come true", pinyin: "Wàn Shì Rú Yì", chinese: "万事如意" },
 ];

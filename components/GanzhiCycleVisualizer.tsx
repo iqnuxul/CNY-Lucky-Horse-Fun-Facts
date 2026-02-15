@@ -4,8 +4,7 @@ import { GANZHI_STEMS, GANZHI_BRANCHES } from '../constants';
 const HISTORICAL_EVENTS: Record<number, { event: string; desc: string }> = {
   1894: { event: "Jiawu War", desc: "First Sino-Japanese War (Year of the Wood Horse)" },
   1898: { event: "Wuxu Reform", desc: "Hundred Days' Reform (Year of the Earth Dog)" },
-  1911: { event: "Xinhai Revolution", desc: "Overthrew the Qing Dynasty (Year of the Metal Pig)" },
-  2026: { event: "Year of the Fire Horse", desc: "The coming year (Bing-Wu)" }
+  1911: { event: "Xinhai Revolution", desc: "Overthrew the Qing Dynasty (Year of the Metal Pig)" }
 };
 
 export const GanzhiCycleVisualizer: React.FC = () => {
@@ -41,7 +40,8 @@ export const GanzhiCycleVisualizer: React.FC = () => {
          </div>
 
          <div className="relative z-10">
-           <h3 className="text-cny-gold font-bold uppercase tracking-widest text-sm mb-6 border-b border-gray-700 pb-2">
+           <h3 className="text-cny-gold font-bold uppercase tracking-widest text-sm mb-6 border-b border-gray-700 pb-2 flex items-center">
+             <span className="bg-cny-gold text-cny-darkRed rounded-full w-6 h-6 flex items-center justify-center mr-3 text-xs font-bold">2</span>
              Interactive Cycle Visualizer
            </h3>
 

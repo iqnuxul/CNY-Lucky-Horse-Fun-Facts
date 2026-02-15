@@ -1,6 +1,8 @@
 import React from 'react';
 import { GREETINGS } from '../constants';
 import { GanzhiCalculator } from './GanzhiCalculator';
+import { RealityCheckWidget } from './ComparisonSection';
+import { GanzhiCycleVisualizer } from './GanzhiCycleVisualizer';
 
 export const CalendarModalContent: React.FC = () => {
   return (
@@ -15,6 +17,7 @@ export const CalendarModalContent: React.FC = () => {
            </p>
        </div>
        <GanzhiCalculator />
+       <GanzhiCycleVisualizer />
     </div>
   );
 };
@@ -55,12 +58,24 @@ export const RitualsModalContent: React.FC = () => {
 
 export const NameDebateModalContent: React.FC = () => {
     return (
-        <div className="bg-white p-6 rounded-xl shadow-sm border-l-4 border-cny-red mb-6">
-            <h4 className="font-bold text-cny-darkRed mb-2 text-lg">The Solar Connection</h4>
-            <p className="text-gray-600 text-sm leading-relaxed">
-                If the calendar were purely lunar (like the Islamic Hijri calendar), the holiday would drift forward by ~11 days every year, eventually occurring in summer, autumn, and winter. 
-                The <strong>Chinese Calendar (Nongli)</strong> adds a leap month periodically to realign with the sun and the seasons, ensuring the "Spring Festival" always happens in Spring.
-            </p>
-        </div>
+        <>
+            <div className="text-center mb-4">
+                <p className="text-gray-600 italic">
+                  Why "Lunar New Year" is scientifically inaccurate for this festival.
+                </p>
+            </div>
+            
+            <div className="mb-6">
+                <RealityCheckWidget />
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm border-l-4 border-cny-red mb-6">
+                <h4 className="font-bold text-cny-darkRed mb-2 text-lg">The Solar Connection</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                    If the calendar were purely lunar (like the Islamic Hijri calendar), the holiday would drift forward by ~11 days every year, eventually occurring in summer, autumn, and winter. 
+                    The <strong>Chinese Calendar (Nongli)</strong> adds a leap month periodically to realign with the sun and the seasons, serving as a crucial guide for agriculture and ensuring the "Spring Festival" always happens in Spring.
+                </p>
+            </div>
+        </>
     );
 }

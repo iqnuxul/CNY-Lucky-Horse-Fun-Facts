@@ -3,9 +3,11 @@ import { COMPARISON_DETAILS, GREETINGS } from '../constants';
 import { GanzhiCalculator } from './GanzhiCalculator';
 import { GanzhiCycleVisualizer } from './GanzhiCycleVisualizer';
 import { RitualsWidget } from './ContentWidgets';
+import { RealityCheckWidget } from './ComparisonSection';
 
 export const DetailedSections: React.FC = () => {
   const [rotation, setRotation] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,16 +18,18 @@ export const DetailedSections: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const observatoryData = COMPARISON_DETAILS.find(item => item.id === 'observatory');
+
   return (
     <div className="space-y-24 py-12 relative overflow-visible">
       
       {/* SECTION 1: NAME DEBATE */}
       <section id="detail-name" className="scroll-mt-24 relative">
          
-         {/* Rotating Background - Using public/rotating_horses.png */}
+         {/* Rotating Background - Using provided GitHub URL */}
          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] md:w-[1500px] md:h-[1500px] pointer-events-none z-0 opacity-10">
              <img 
-               src="public/rotating_horses.png" 
+               src="https://github.com/iqnuxul/CNY-Lucky-Horse-Fun-Facts/blob/d2ce00ad2b23a54115aec0dc7df668346eaa4a60/_Image%205.png?raw=true" 
                alt="Rotating Horses" 
                className="w-full h-full object-contain will-change-transform"
                style={{ transform: `rotate(${rotation}deg)` }}
@@ -47,37 +51,74 @@ export const DetailedSections: React.FC = () => {
                     <h4 className="font-bold text-cny-darkRed mb-2">The Solar Connection</h4>
                     <p className="text-sm">
                         If the calendar were purely lunar (like the Islamic Hijri calendar), the holiday would drift forward by ~11 days every year, eventually occurring in summer, autumn, and winter. 
-                        The <strong>Chinese Calendar (Nongli)</strong> adds a leap month periodically to realign with the sun and the seasons, ensuring the "Spring Festival" always happens in Spring.
+                        The <strong>Chinese Calendar (Nongli)</strong> adds a leap month periodically to realign with the sun and the seasons, serving as a crucial guide for agriculture and ensuring the "Spring Festival" always happens in Spring.
                     </p>
                 </div>
 
                 {/* THE 2026 REALITY CHECK WIDGET */}
-                <div className="bg-cny-paper border border-cny-gold/50 rounded-xl p-6 text-center mt-6">
-                    <div className="flex flex-col gap-4">
-                        <div className="bg-white p-3 rounded-lg shadow-sm border border-cny-red/20">
-                            <div className="text-xs text-gray-500 font-bold mb-1">Chinese New Year</div>
-                            <div className="text-2xl font-bold text-cny-red">Feb 17, 2026</div>
-                            <div className="text-[10px] text-cny-gold font-bold">LUNISOLAR</div>
+                <div className="mt-6">
+                    <RealityCheckWidget />
+                </div>
+
+                {/* OBSERVATORY CARD - Moved Here */}
+                {observatoryData && (
+                    <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 mt-6 not-prose">
+                        <div className="flex items-center mb-3">
+                            <div className="text-cny-darkRed mr-3">{observatoryData.icon}</div>
+                            <h3 className="font-bold text-gray-800 text-lg">{observatoryData.title}</h3>
                         </div>
-                        <div className="text-gray-400 font-bold text-sm">VS</div>
-                        <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
-                            <div className="text-xs text-gray-500 font-bold mb-1">Pure Lunar Date</div>
-                            <div className="text-2xl font-bold text-gray-500">June 27, 2026</div>
-                            <div className="text-[10px] text-gray-400 font-bold">LUNAR ONLY</div>
+                        
+                        <div className="pl-9 space-y-4">
+                          {observatoryData.content.map((point, idx) => (
+                            <div key={idx}>
+                               <h4 className="text-xs font-bold text-cny-darkRed uppercase tracking-wider mb-1">{point.subtitle}</h4>
+                               <p className="text-sm text-gray-600">{point.text}</p>
+                            </div>
+                          ))}
                         </div>
                     </div>
-                </div>
+                )}
              </div>
              
              {/* Visual Comparison Cards Reuse */}
              <div className="flex flex-col gap-4">
-                {COMPARISON_DETAILS.map((item) => (
+                {COMPARISON_DETAILS.filter(item => item.id !== 'science' && item.id !== 'observatory').map((item) => (
                     <div key={item.id} className="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
-                        <div className="flex items-center mb-2">
+                        <div className="flex items-center mb-3">
                             <div className="text-cny-darkRed mr-3">{item.icon}</div>
                             <h3 className="font-bold text-gray-800">{item.title}</h3>
                         </div>
-                        <p className="text-sm text-gray-600 pl-9">{item.content[0].text}</p>
+                        
+                        <div className="pl-9 space-y-4">
+                          {item.content.map((point, idx) => (
+                            <div key={idx}>
+                               <h4 className="text-xs font-bold text-cny-darkRed uppercase tracking-wider mb-1">{point.subtitle}</h4>
+                               <p className="text-sm text-gray-600">{point.text}</p>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        {/* Image Preview if available */}
+                        {item.image && (
+                           <div className="pl-9 mt-4">
+                              <div className="mb-1 text-xs font-bold text-gray-400 uppercase">Evidence:</div>
+                              <div 
+                                className="relative group cursor-zoom-in overflow-hidden rounded-lg border border-gray-200 shadow-sm" 
+                                onClick={() => setSelectedImage(item.image as string)}
+                              >
+                                <img 
+                                  src={item.image} 
+                                  alt="Proof" 
+                                  className="w-full h-64 object-cover object-top opacity-95 group-hover:opacity-100 transition-opacity bg-gray-50"
+                                />
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                                   <span className="text-white text-xs font-bold bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                                      View Full Proof
+                                   </span>
+                                </div>
+                              </div>
+                           </div>
+                        )}
                     </div>
                 ))}
              </div>
@@ -177,13 +218,34 @@ export const DetailedSections: React.FC = () => {
                         </div>
                     ))}
                 </div>
-                <div className="p-4 bg-gray-50 text-center text-xs text-gray-400">
-                    Tip: "Gong Xi Fa Cai" means "Wishing you wealth", not strictly "Happy New Year"!
-                </div>
             </div>
 
          </div>
       </section>
+
+      {/* Lightbox Modal for Detailed Section */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative w-full h-full flex flex-col items-center justify-center">
+             <img 
+               src={selectedImage} 
+               alt="Full Proof" 
+               className="max-w-full max-h-[85vh] object-contain rounded shadow-2xl"
+               onClick={(e) => e.stopPropagation()}
+             />
+             <button 
+               className="mt-6 bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/20 transition-colors font-bold flex items-center gap-2 backdrop-blur-md border border-white/20"
+               onClick={() => setSelectedImage(null)}
+             >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                Close Proof
+             </button>
+          </div>
+        </div>
+      )}
 
     </div>
   );
