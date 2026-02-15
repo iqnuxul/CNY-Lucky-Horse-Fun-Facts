@@ -12,16 +12,3 @@ export interface ComparisonPoint {
   cny: string;
   lny: string;
 }
-
-export enum GenerationStatus {
-  IDLE = 'IDLE',
-  LOADING = 'LOADING',
-  SUCCESS = 'SUCCESS',
-  ERROR = 'ERROR'
-}
-
-export interface HorseGenerationState {
-  status: GenerationStatus;
-  imageUrl: string | null;
-  error: string | null;
-}
