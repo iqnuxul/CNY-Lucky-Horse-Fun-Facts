@@ -6,18 +6,26 @@ export const HERO_TEXT = {
   intro: "Welcome the year of the Fire Horse (Bing-Wu)"
 };
 
-// Placeholder data for the 10 random horses
-export const HORSE_RESULTS = Array.from({ length: 10 }, (_, i) => ({
-  id: i + 1,
-  name: `Lucky Horse #${i + 1}`,
-  // Using solid colors/gradients as placeholders for now
-  placeholderColor: [
-    'bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-green-500', 
-    'bg-teal-500', 'bg-blue-500', 'bg-indigo-500', 'bg-purple-500', 
-    'bg-pink-500', 'bg-rose-500'
-  ][i],
-  desc: "A symbol of strength and progress for your 2026."
-}));
+// Data for the 10 random horses with images and wishes
+const WISHES = [
+  { cn: "心似草原，自在如马。", en: "May your heart be wide open, as free as a horse." },
+  { cn: "笔下生风，马到功成。", en: "Write like the wind - success is just ahead." },
+  { cn: "愿遇良人，并马同行。", en: "May you find true love and ride side by side." },
+  { cn: "阖家安乐，马跃福门。", en: "Joy fills your home as the horse leaps through." },
+  { cn: "身如骏马，无病无忧。", en: "May you be as strong as a horse - healthy and carefree." },
+  { cn: "金马报喜，财源滚滚。", en: "A golden horse brings fortune and abundance." },
+  { cn: "马到成功，旗开得胜。", en: "Win at the start, succeed at once." }
+];
+
+export const HORSE_RESULTS = Array.from({ length: 10 }, (_, i) => {
+  const wish = WISHES[i % WISHES.length];
+  return {
+    id: i + 1,
+    name: `Lucky Horse #${i + 1}`,
+    imageUrl: `https://github.com/iqnuxul/CNY-Lucky-Horse-Fun-Facts/blob/8da00c7345fe9a0b8c2dab71f7e02a7e72e037b1/h${i + 1}.png?raw=true`,
+    desc: `${wish.cn}\n${wish.en}`
+  };
+});
 
 export const RITUALS = [
   {
@@ -111,7 +119,15 @@ export const COMPARISON_DETAILS = [
     content: [
       {
         subtitle: "The 1968 Shift",
-        text: "In Hong Kong, the Holidays (Amendment) Ordinance No 19 of 1967 officially used 'Chinese New Year'. Just one year later, British colonial authorities changed it to 'Lunar New Year' in the 1968 Ordinance (Bill No. 11). This bureaucratic change aimed to dilute the festival's specific Chinese identity."
+        text: "In Hong Kong, the Holidays (Amendment) Ordinance No 19 of 1967 officially used 'Chinese New Year'. Just one year later, British colonial authorities changed it to 'Lunar New Year' in the 1968 Ordinance (Bill No. 11), published on April 11, 1968 within the Legal Supplement No. 3 to the Hong Kong Government Gazette."
+      },
+      {
+        subtitle: "Bureaucratic Erasure",
+        text: "This shift was not accidental. Following political unrest, colonial authorities systematically downplayed Chinese cultural and political identity. Replacing the specific cultural name with a generic term served to weaken the festival's connection to its Chinese origins."
+      },
+      {
+        subtitle: "Decolonization",
+        text: "Reinstating 'Chinese New Year' today aligns with broader global efforts toward decolonization and the recognition of historically marginalised identities. It restores the festival's proper name and honors its specific cultural source."
       }
     ],
     image: "https://github.com/iqnuxul/CNY-Lucky-Horse-Fun-Facts/blob/4ad4b53228c210f5b2dbab69a097212913e36e41/IMG_0382.jpg?raw=true",
