@@ -14,7 +14,7 @@ export const RealityCheckWidget: React.FC = () => {
             <div className="text-gray-400 font-bold text-sm">VS</div>
              <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
                 <div className="text-xs text-gray-500 font-bold mb-1">Pure Lunar Date </div>
-                <div className="text-2xl font-bold text-gray-500">June 27, 2026</div>
+                <div className="text-2xl font-bold text-gray-500">June 16, 2026</div>
                 <div className="text-[10px] text-gray-400 font-bold">LUNAR ONLY</div>
             </div>
         </div>
