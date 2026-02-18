@@ -93,7 +93,7 @@ export const GanzhiCalculator: React.FC = () => {
                 Discover Your "Nongli" Animal
             </h3>
             <p className="text-gray-600 text-sm mb-4">
-                Enter your Gregorian birthday. We'll check the exact Chinese New Year date to find your true animal.
+                Every Chinese person has their own birthday on the Chinese calendar. Enter your Gregorian birth date to find your corresponding zodiac animal!
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 items-end">
