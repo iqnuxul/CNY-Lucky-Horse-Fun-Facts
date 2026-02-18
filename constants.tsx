@@ -119,7 +119,7 @@ export const COMPARISON_DETAILS = [
     content: [
       {
         subtitle: "The 1968 Shift",
-        text: "In Hong Kong, the Holidays (Amendment) Ordinance No 19 of 1967 officially used 'Chinese New Year'. Just one year later, British colonial authorities changed it to 'Lunar New Year' in the 1968 Ordinance (Bill No. 11), published on April 11, 1968 within the Legal Supplement No. 3 to the Hong Kong Government Gazette."
+        text: "The term “Lunar New Year” is not merely a neutral translation choice; it carries historical context shaped by colonial rule. In 1968, when Hong Kong was under British colonial administration, the official terminology was changed from “Chinese New Year” to “Lunar New Year” in the Holidays (Amendment) Ordinance 1968. This shift from a culturally specific name to a generic label is widely understood as part of a broader colonial effort to distance the festival from its Chinese cultural and national identity. Insisting on the use of “Chinese New Year” affirms the festival’s cultural origins and asserts the importance of accurately recognizing its historical and cultural identity."
       }
     ],
     image: "https://github.com/iqnuxul/CNY-Lucky-Horse-Fun-Facts/blob/4ad4b53228c210f5b2dbab69a097212913e36e41/IMG_0382.jpg?raw=true",
